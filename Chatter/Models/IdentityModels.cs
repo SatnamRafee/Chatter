@@ -14,6 +14,9 @@ namespace Chatter.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
+        //Add User name
+        public string ChatName { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

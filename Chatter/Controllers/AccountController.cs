@@ -152,7 +152,7 @@ namespace Chatter.Controllers
             if (ModelState.IsValid)
             {
                 //change UserName to be model.UserName. Add FirstName and LastName
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, ChatName = model.ChatName, FirstName = model.FirstName, LastName = model.LastName };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
