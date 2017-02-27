@@ -12,12 +12,12 @@ namespace Chatter.Models
         [Key]
         public int ChatID { get; set; }
 
-        public char[] ChatBody { get; set; }
+        public string ChatBody { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh:mm tt| ddd, MMM d, yyyy}")]
-        public DateTime PublishDate { get; set; }
+        public DateTime PublishDate = DateTime.Now;
         
         //
-        public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

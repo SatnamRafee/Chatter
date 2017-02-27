@@ -13,6 +13,8 @@
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.PublishDate)
+            @Html.DisplayNameFor(model => model.ChatBody)
+            @Html.DisplayNameFor(model => model.ApplicationUser.ChatName)
         </th>
         <th></th>
     </tr>
@@ -21,6 +23,8 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.PublishDate)
+            @Html.DisplayFor(modelItem => item.ChatBody)
+            @Html.DisplayFor(modelItem => item.ApplicationUser.ChatName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ChatID }) |
