@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Collections.Generic;
 
 namespace Chatter.Models
 {
@@ -25,6 +26,9 @@ namespace Chatter.Models
             return userIdentity;
         }
 
+        //
+        public virtual ICollection<Chat> Chats { get; set; }
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -38,5 +42,7 @@ namespace Chatter.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Chatter.Models.Chat> Chats { get; set; }
     }
 }

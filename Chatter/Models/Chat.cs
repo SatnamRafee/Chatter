@@ -16,7 +16,8 @@ namespace Chatter.Models
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh:mm tt| ddd, MMM d, yyyy}")]
         public DateTime PublishDate { get; set; }
-
-        public virtual ICollection<ApplicationUser> userIdentity { get; set; }
+        
+        //
+        public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
     }
 }
