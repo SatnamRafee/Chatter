@@ -17,7 +17,7 @@ namespace Chatter.Controllers
         // GET: Chats
         public ActionResult Index()
         {
-            Chat chat = db.Chats.Find();
+            Chat chat = db.Chats.Include(i => i.ApplicationUser.ChatName);
 
             //Daniel:We can populate our new view model entity with a linq query. We have a lot of flexibility
             var viewModel = new ChatViewModel
