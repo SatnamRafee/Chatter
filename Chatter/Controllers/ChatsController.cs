@@ -32,7 +32,7 @@ namespace Chatter.Controllers
 
 
 
-            return View(db.Chats.Include(q => q.ApplicationUser).ToList());
+            return View(db.Chats.ToList());
         }
 
 

@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Chatter.Models
 {
@@ -16,7 +17,8 @@ namespace Chatter.Models
         public string LastName { get; set; }
 
         //Add User name
-        public virtual string ChatName { get; set; }
+        [Display(Name = "Chat Name")]
+        public string ChatName { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
