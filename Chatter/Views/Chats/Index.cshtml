@@ -13,7 +13,11 @@
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.PublishDate)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.ChatBody)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.ApplicationUser.ChatName)
         </th>
         <th></th>
@@ -23,7 +27,11 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.PublishDate)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.ChatBody)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.ApplicationUser.ChatName)
         </td>
         <td>

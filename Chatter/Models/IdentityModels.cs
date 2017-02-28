@@ -16,7 +16,7 @@ namespace Chatter.Models
         public string LastName { get; set; }
 
         //Add User name
-        public string ChatName { get; set; }
+        public virtual string ChatName { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
