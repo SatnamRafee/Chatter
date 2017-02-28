@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -7,8 +6,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Chatter.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+
 
 namespace Chatter.Controllers
 {
@@ -19,23 +17,8 @@ namespace Chatter.Controllers
         // GET: Chats
         public ActionResult Index()
         {
-            //if (Request.IsAuthenticated)
-            //{
-            //    string currentUserId = User.Identity.GetUserId();
-
-            //    var userProducts = db.Chats.Where(p => p.UserId == currentUserId).ToList();
-            //    UserManager<ApplicationUser> UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
-            //    ApplicationUser currentUser = UserManager.FindById(User.Identity.GetUserId());
-            //    List<Chat> chats = db.Chats.Where(p => p.ApplicationUser.Equals(currentUser.ChatName)).ToList();
-            //    return View(userProducts);
-            //}
-
-
-
             return View(db.Chats.ToList());
         }
-
-
 
         // GET: Chats/Details/5
         public ActionResult Details(int? id)
