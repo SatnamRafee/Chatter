@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Chatter.Models.ChatViewModel>
+﻿@model IEnumerable<Chatter.Models.Chat>
 
 @{
     ViewBag.Title = "Index";
@@ -12,10 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Chat.PublishDate)
+            @Html.DisplayNameFor(model => model.PublishDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Chat.ChatBody)
+            @Html.DisplayNameFor(model => model.ChatBody)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ApplicationUser.ChatName)
@@ -23,23 +23,24 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Chat.PublishDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Chat.ChatBody)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApplicationUser.ChatName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Chat.ChatID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Chat.ChatID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Chat.ChatID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChatBody)
+            </td>
+            <td>
+                @User.Identity.Name
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ChatID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ChatID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ChatID })
+            </td>
+        </tr>
+    }
 
 </table>

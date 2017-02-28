@@ -17,20 +17,21 @@ namespace Chatter.Controllers
         // GET: Chats
         public ActionResult Index()
         {
-            Chat chat = db.Chats.Include(i => i.ApplicationUser.ChatName);
+            //Chat chat = db.Chats.Include(i => i.ApplicationUser.ChatName);
 
-            //Daniel:We can populate our new view model entity with a linq query. We have a lot of flexibility
-            var viewModel = new ChatViewModel
-            {
-                //We can reuse the comment form from a couple of lines above
-                Chat = chat,
-                //We don't want to pull back all the procedures, just the one with the same priority as our comment
-                ApplicationUser = (from p in db.Users
-                                   where p.ChatName == chat.ApplicationUser.ChatName
-                                   select p).First()
-            };
-            return View(viewModel);
-            //return View(db.Chats.ToList());
+            ////Daniel:We can populate our new view model entity with a linq query. We have a lot of flexibility
+            //var viewModel = new ChatViewModel
+            //{
+            //    //We can reuse the comment form from a couple of lines above
+            //    Chat = chat,
+            //    //We don't want to pull back all the procedures, just the one with the same priority as our comment
+            //    ApplicationUser = (from p in db.Users
+            //                       where p.ChatName == chat.ApplicationUser.ChatName
+            //                       select p).First()
+            //};
+            //return View(viewModel);
+
+            return View(db.Chats.ToList());
 
             // GET: Chats/Details/5
         }
@@ -45,7 +46,20 @@ namespace Chatter.Controllers
             {
                 return HttpNotFound();
             }
-            return View(chat);
+            var viewModel = new ChatViewModel
+            {
+                //We can reuse the comment form from a couple of lines above
+                Chat = chat,
+                //We don't want to pull back all the procedures, just the one with the same priority as our comment
+                ApplicationUser = (from p in db.Users
+                                   where p.ChatName == chat.ApplicationUser.ChatName
+                                   select p).First()
+            };
+            return View(viewModel);
+
+
+            //return View(chat);
+
         }
 
         // GET: Chats/Create
