@@ -14,8 +14,8 @@ namespace Chatter.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        
-        
+
+
 
         // GET: Chats
         public ActionResult Index()
@@ -53,7 +53,7 @@ namespace Chatter.Controllers
             {
                 //We can reuse the chat from a couple of lines above
                 Chat = chat,
-                
+
                 //We don't want to pull back all the users, just the one with the same SOMETHING as our chat
                 ApplicationUser = (from p in db.Users
                                    where p.ChatName == chat.PublishedBy
@@ -75,6 +75,7 @@ namespace Chatter.Controllers
         // POST: Chats/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ChatID,ChatBody,PublishedBy")] Chat chat)
