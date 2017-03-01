@@ -20,19 +20,7 @@ namespace Chatter.Controllers
         // GET: Chats
         public ActionResult Index()
         {
-            //Chat chat = db.Chats.Include(i => i.ApplicationUser.ChatName);
-
-            ////Daniel:We can populate our new view model entity with a linq query. We have a lot of flexibility
-            //var viewModel = new ChatViewModel
-            //{
-            //    //We can reuse the comment form from a couple of lines above
-            //    Chat = chat,
-            //    //We don't want to pull back all the procedures, just the one with the same priority as our comment
-            //    ApplicationUser = (from p in db.Users
-            //                       where p.ChatName == chat.ApplicationUser.ChatName
-            //                       select p).First()
-            //};
-            //return View(viewModel);
+            //Chat chat = db.Chats.Find();
 
             return View(db.Chats.ToList());
 
@@ -53,7 +41,6 @@ namespace Chatter.Controllers
             {
                 //We can reuse the chat from a couple of lines above
                 Chat = chat,
-
                 //We don't want to pull back all the users, just the one with the same SOMETHING as our chat
                 ApplicationUser = (from p in db.Users
                                    where p.UserName == chat.PublishedBy
@@ -81,7 +68,7 @@ namespace Chatter.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ChatID,ChatBody,PublishedBy")] Chat chat)
         {
-            chat.PublishedBy = (User.Identity.Name).ToString();
+            //chat.PublishedBy = (User.Identity.Name).ToString();
 
             if (ModelState.IsValid)
             {

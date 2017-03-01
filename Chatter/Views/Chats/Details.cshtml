@@ -3,40 +3,42 @@
 @{
     ViewBag.Title = "Details";
 }
+<div id="Details-Index">
 
-<h2>Details</h2>
+    <h2>Details</h2>
 
-<div>
-    <h4>Chat</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Chat.PublishDate)
-        </dt>
+    <div>
+        <h4>Chat</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Chat.PublishDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Chat.PublishDate)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Chat.PublishDate)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationUser.ChatName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ApplicationUser.ChatName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationUser.ChatName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ApplicationUser.ChatName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Chat.ChatBody)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Chat.ChatBody)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Chat.ChatBody)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Chat.ChatBody)
+            </dd>
 
-    </dl>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Chat.ChatID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Chat.ChatID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
