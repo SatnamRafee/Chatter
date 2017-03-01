@@ -14,6 +14,9 @@ namespace Chatter.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        
+        
+
         // GET: Chats
         public ActionResult Index()
         {
@@ -48,11 +51,12 @@ namespace Chatter.Controllers
             }
             var viewModel = new ChatViewModel
             {
-                //We can reuse the comment form from a couple of lines above
+                //We can reuse the chat from a couple of lines above
                 Chat = chat,
-                //We don't want to pull back all the procedures, just the one with the same priority as our comment
+                
+                //We don't want to pull back all the users, just the one with the same SOMETHING as our chat
                 ApplicationUser = (from p in db.Users
-                                   where p.ChatName == chat.ApplicationUser.ChatName
+                                   where p.ChatName == chat.PublishedBy
                                    select p).First()
             };
             return View(viewModel);
@@ -73,7 +77,7 @@ namespace Chatter.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ChatID,ChatBody,ChatName")] Chat chat)
+        public ActionResult Create([Bind(Include = "ChatID,ChatBody,PublishedBy")] Chat chat)
         {
 
             if (ModelState.IsValid)

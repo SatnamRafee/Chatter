@@ -16,8 +16,10 @@ namespace Chatter.Models
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:hh:mm tt| ddd, MMM d, yyyy}")]
         public DateTime PublishDate = DateTime.Now;
-        
-        //
+
+        public string PublishedBy { get; set; }
+          
         public virtual ApplicationUser ApplicationUser { get; set; }
+
     }
 }
