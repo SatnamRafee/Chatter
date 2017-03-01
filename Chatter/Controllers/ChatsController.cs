@@ -56,7 +56,7 @@ namespace Chatter.Controllers
 
                 //We don't want to pull back all the users, just the one with the same SOMETHING as our chat
                 ApplicationUser = (from p in db.Users
-                                   where p.ChatName == chat.PublishedBy
+                                   where p.UserName == chat.PublishedBy
                                    select p).First()
             };
             return View(viewModel);
@@ -66,6 +66,7 @@ namespace Chatter.Controllers
 
         }
 
+        [Authorize]
         // GET: Chats/Create
         public ActionResult Create()
         {
@@ -80,6 +81,7 @@ namespace Chatter.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ChatID,ChatBody,PublishedBy")] Chat chat)
         {
+            chat.PublishedBy = (User.Identity.Name).ToString();
 
             if (ModelState.IsValid)
             {
